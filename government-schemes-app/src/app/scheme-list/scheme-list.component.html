@@ -1,0 +1,31 @@
+<div class="search-container">
+  <label for="profession">Search by Profession:</label>
+  <input type="text" id="profession" [(ngModel)]="professionSearchTerm" />
+</div>
+
+<div class="search-container">
+  <label for="age">Search by Age:</label>
+  <input type="number" id="age" [(ngModel)]="ageSearchTerm" />
+</div>
+
+<div class="search-container">
+  <label for="gender">Search by Gender:</label>
+  <input type="text" id="gender" [(ngModel)]="genderSearchTerm" />
+</div>
+
+<div class="search-container">
+  <label for="search">Search by Name:</label>
+  <input type="text" id="search" [(ngModel)]="nameSearchTerm" />
+  <button (click)="searchSchemes()">Search</button>
+</div>
+
+<div *ngIf="isSearchPerformed">
+  <ul *ngIf="filteredSchemes.length > 0">
+    <li *ngFor="let scheme of filteredSchemes">
+      <a [routerLink]="['/details', scheme.id]">{{ scheme.name }}</a>
+    </li>
+  </ul>
+  <div *ngIf="filteredSchemes.length === 0">
+    No schemes found based on the provided criteria.
+  </div>
+</div>

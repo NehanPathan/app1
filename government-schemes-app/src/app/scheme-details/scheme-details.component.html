@@ -1,0 +1,18 @@
+<div *ngIf="scheme">
+  <h2>{{ scheme.name }}</h2>
+  <p>{{ scheme.description }}</p>
+  <p><strong>Profession:</strong> {{ scheme.profession }}</p>
+  <p><strong>Minimum Age:</strong> {{ scheme.minAge }}</p>
+  <p><strong>Gender:</strong> {{ scheme.gender }}</p>
+  <p><strong>Benefits:</strong> {{ scheme.benefits }}</p>
+  <p><strong>Application Process:</strong> {{ scheme.applicationProcess }}</p>
+  <p><strong>Required Documents:</strong> {{ scheme.requiredDocuments }}</p>
+  <p><strong>Start Date:</strong> {{ scheme.startDate }}</p>
+  <p><strong>End Date:</strong> {{ scheme.endDate }}</p>
+  <p>
+    <strong>Application Link:</strong>
+    <a href="{{ scheme.applicationLink }}" target="_blank">{{
+      scheme.applicationLink
+    }}</a>
+  </p>
+</div>
