@@ -1,0 +1,44 @@
+<!-- Recent Schemes Carousel -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div
+    id="recentSchemesCarousel"
+    class="carousel slide carousel-container"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div
+        *ngFor="let scheme of recentSchemes; let i = index"
+        [ngClass]="{ 'carousel-item': true, active: i === 0 }"
+      >
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">{{ scheme.name }}</h3>
+            <p class="card-text">{{ scheme.description }}</p>
+            <!-- Add other scheme details here -->
+            <a [routerLink]="['/details', scheme.id]" class="btn btn-primary"
+              >Read More</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#recentSchemesCarousel"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#recentSchemesCarousel"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>

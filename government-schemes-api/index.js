@@ -123,11 +123,42 @@ const schemes = [
     benefits: "Financial support for tuition and books",
     applicationProcess: "Apply online through the State Scholarship Portal.",
     requiredDocuments: "Previous academic records, identity proof, admission letter",
-    startDate: "01-08-2024",
-    endDate: "31-07-2025",
+    startDate: "01-02-2024",
+    endDate: "31-03-2024",
     applicationLink: "https://www.gujarat-studentscholarships.com"
+  },
+  {
+    id: 9,
+    name: "Student1 Scholarships Program",
+    description: "Scholarships for students pursuing higher education.",
+    profession: "Students",
+    minAge: 18,
+    gender: "any",
+    benefits: "Financial support for tuition and books",
+    applicationProcess: "Apply online through the State Scholarship Portal.",
+    requiredDocuments: "Previous academic records, identity proof, admission letter",
+    startDate: "06-11-2023",
+    endDate: "31-01-2024",
+    applicationLink: "https://www.gujarat-student1scholarships.com"
+  },
+  {
+    id: 10,
+    name: "Student2 Scholarships Program",
+    description: "Scholarships for students pursuing higher education.",
+    profession: "Students",
+    minAge: 18,
+    gender: "any",
+    benefits: "Financial support for tuition and books",
+    applicationProcess: "Apply online through the State Scholarship Portal.",
+    requiredDocuments: "Previous academic records, identity proof, admission letter",
+    startDate: "01-11-2023",
+    endDate: "31-12-2023",
+    applicationLink: "https://www.gujarat-students2cholarships.com"
   }
-];
+].map(scheme => ({
+  ...scheme,
+  applications: Math.floor(Math.random() * 10), // Mock applications for sorting
+}));
 
 
 
@@ -158,6 +189,20 @@ app.get('/filtered-schemes', (req, res) => {
 
   res.json(filteredSchemes);
 });
+
+// Backend API for Popular Schemes
+app.get('/popular-schemes', (_, res) => {
+  const popularSchemes = [...schemes].sort((a, b) => b.applications - a.applications).slice(0, 2);
+  res.json(popularSchemes);
+});
+
+
+// Backend API for Recent Schemes
+app.get('/recent-schemes', (_, res) => {
+  const recentSchemes = [...schemes].sort((a, b) => new Date(b.startDate) - new Date(a.startDate)).slice(0, 2);
+  res.json(recentSchemes);
+});
+
 
 
 // Handle requests to the root URL ("/")

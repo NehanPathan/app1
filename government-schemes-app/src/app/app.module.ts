@@ -7,12 +7,16 @@
   import { SchemeDetailsComponent } from './scheme-details/scheme-details.component';
   import { AppRoutingModule } from './app-routing.module';
   import { FormsModule } from '@angular/forms';
+import { RecentSchemesComponent } from './recent-schemes/recent-schemes.component';
+import { PopularSchemesComponent } from './popular-schemes/popular-schemes.component';
 
   @NgModule({
     declarations: [
       AppComponent,
       SchemeListComponent,
-      SchemeDetailsComponent
+      SchemeDetailsComponent,
+      RecentSchemesComponent,
+      PopularSchemesComponent
     ],
     imports: [
       BrowserModule,

@@ -18,4 +18,12 @@ export class SchemeService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<any>(url);
   }
+
+  getRecentSchemes(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/recent-schemes`);
+  }
+
+  getPopularSchemes(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/popular-schemes`);
+  }
 }
