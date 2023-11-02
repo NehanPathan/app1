@@ -1,24 +1,56 @@
-<div class="search-container">
-  <label for="profession">Search by Profession:</label>
-  <input type="text" id="profession" [(ngModel)]="professionSearchTerm" />
-</div>
+<!-- Navbar with Home button and Search dropdown -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/home']">Home</a>
 
-<div class="search-container">
-  <label for="age">Search by Age:</label>
-  <input type="number" id="age" [(ngModel)]="ageSearchTerm" />
-</div>
+    <!-- Search dropdown button -->
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="searchDropdownButton"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Search Schemes
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="searchDropdownButton">
+        <!-- Search form goes here -->
+        <li>
+          <div class="search-container">
+            <label for="profession">Search by Profession:</label>
+            <input
+              type="text"
+              id="profession"
+              [(ngModel)]="professionSearchTerm"
+            />
+          </div>
+        </li>
+        <li>
+          <div class="search-container">
+            <label for="age">Search by Age:</label>
+            <input type="number" id="age" [(ngModel)]="ageSearchTerm" />
+          </div>
+        </li>
+        <li>
+          <div class="search-container">
+            <label for="gender">Search by Gender:</label>
+            <input type="text" id="gender" [(ngModel)]="genderSearchTerm" />
+          </div>
+        </li>
+        <li>
+          <div class="search-container">
+            <label for="search">Search by Name:</label>
+            <input type="text" id="search" [(ngModel)]="nameSearchTerm" />
+            <button (click)="searchSchemes()">Search</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-<div class="search-container">
-  <label for="gender">Search by Gender:</label>
-  <input type="text" id="gender" [(ngModel)]="genderSearchTerm" />
-</div>
-
-<div class="search-container">
-  <label for="search">Search by Name:</label>
-  <input type="text" id="search" [(ngModel)]="nameSearchTerm" />
-  <button (click)="searchSchemes()">Search</button>
-</div>
-
+<!-- Display filtered schemes -->
 <div *ngIf="isSearchPerformed">
   <ul *ngIf="filteredSchemes.length > 0">
     <li *ngFor="let scheme of filteredSchemes">

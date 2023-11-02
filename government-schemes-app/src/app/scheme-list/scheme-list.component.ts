@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SchemeService } from '../scheme.service';
+import { ViewChild, ElementRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-scheme-list',
@@ -16,6 +18,14 @@ export class SchemeListComponent implements OnInit {
   isSearchPerformed: boolean = false;
 
   constructor(private schemeService: SchemeService) { }
+
+  @ViewChild('searchDropdown', { static: false }) searchDropdown!: ElementRef;
+
+  // Function to toggle the dropdown menu
+  toggleDropdown() {
+    this.searchDropdown.nativeElement.classList.toggle('show');
+  }
+
 
   ngOnInit(): void {
     this.schemeService.getSchemes().subscribe(data => {
